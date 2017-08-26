@@ -13,16 +13,9 @@ public class InternationalController {
 
 
 	@RequestMapping(value = {"/","/index"}, method = RequestMethod.GET)
-	public String showPage(ModelMap modelMap,
-			@RequestParam(value = "message", required = false) String message,
-			@RequestParam(value = "id", required = false) Long id) {
+	public String showPage(ModelMap modelMap) {
 		MyUser myUser = new MyUser();
-		/*if (id != null) {
-			myUser = myUserService.findByID(id);
-		}*/
 		modelMap.addAttribute("myUser", myUser);
-		modelMap.addAttribute("message", message);
-
 		return "register";
 	}
 }
