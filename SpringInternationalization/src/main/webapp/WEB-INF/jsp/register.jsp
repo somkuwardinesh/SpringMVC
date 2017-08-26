@@ -26,22 +26,9 @@
 	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
 	crossorigin="anonymous">
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-<script type="text/javascript">
-	function addUser() {
-		myUser.action = "${pageContext.request.contextPath}/add";
-		myUser.submit();
-	}
-	
-</script>	
 
 </head>
 <body>
-	<c:if test="${not empty message}">
-		<div class="alert alert-success">${message}</div>
-	</c:if>
 
 	<form:form id="myUser" name="myUser" method="post" commandName="myUser"
 		action="/add" class="form-horizontal">
