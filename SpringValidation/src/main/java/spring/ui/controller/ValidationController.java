@@ -42,10 +42,8 @@ public class ValidationController {
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addUser( ModelMap modelMap,@ModelAttribute @Valid MyUser myUser,BindingResult result) {
 
-		System.out.println("1");
 			if(result.hasErrors())
 			{
-				System.out.println("2");
 				return "register";
 			}
 			
