@@ -19,24 +19,12 @@ public class Images {
 	@Column
 	private String imageName;
 
-	@ManyToOne
-	@JoinColumn(name = "u_id")
-	private MyUser myUser;
-
 	public long getId() {
 		return id;
 	}
 
 	public void setId(long id) {
 		this.id = id;
-	}
-
-	public MyUser getMyUser() {
-		return myUser;
-	}
-
-	public void setMyUser(MyUser myUser) {
-		this.myUser = myUser;
 	}
 
 	public String getImageName() {

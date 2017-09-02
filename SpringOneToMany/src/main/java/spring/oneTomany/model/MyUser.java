@@ -5,8 +5,11 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -29,8 +32,10 @@ public class MyUser {
 
 	@Column
 	private String city;
+	 
 
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	@JoinTable(name="user_images",joinColumns=@JoinColumn(name="u_id"),inverseJoinColumns=@JoinColumn(name="img_id"))
 	private List<Images> imageList;
 	
 	@Transient
@@ -38,8 +43,6 @@ public class MyUser {
 	
 	public MyUser() {
 	}
-
-	
 
 	public long getId() {
 		return id;

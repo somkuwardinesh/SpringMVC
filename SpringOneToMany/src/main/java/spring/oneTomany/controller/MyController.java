@@ -31,12 +31,9 @@ public class MyController {
 
 	@RequestMapping(value = {"/","/index"}, method = RequestMethod.GET)
 	public String showPage(ModelMap modelMap,
-			@RequestParam(value = "message", required = false) String message,
-			@RequestParam(value = "id", required = false) Long id) {
+			@RequestParam(value = "message", required = false) String message) {
 		MyUser myUser = new MyUser();
-		if (id != null) {
-			myUser = myUserService.findByID(id);
-		}
+		
 		modelMap.addAttribute("myUser", myUser);
 		modelMap.addAttribute("message", message);
 
@@ -47,8 +44,6 @@ public class MyController {
 	public String addUser(@ModelAttribute MyUser myUser, ModelMap modelMap) throws Exception{
 		List<Images> imageList = new ArrayList<>();
 
-		System.out.println("1");
-		if (myUser.getId() == 0) {
 			CommonsMultipartFile[] file = myUser.getFleUpload();
 			for (CommonsMultipartFile commonsMultipartFile : file) {
 				Images img = new Images();
@@ -64,24 +59,8 @@ public class MyController {
 			myUserService.saveMyUser(myUser);
 			modelMap.addAttribute("message", "user added Successfully");
 			return "redirect:/index";
-		} else {
-			myUserService.updateMyUser(myUser);
-			modelMap.addAttribute("message", "user Updated Successfully");
-			return "redirect:/index";
-		}
+		
 	}
 
-	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	public String deleteUser(ModelMap modelMap,
-			@RequestParam(value = "id", required = false) Long id) {
-		myUserService.deleteMyUserById(id);
-		modelMap.addAttribute("message", "user Deleted Successfully");
-		return "redirect:/index";
-	}
-
-	@ModelAttribute("myUserList")
-	public List<MyUser> getAllUser() {
-		return myUserService.getMyUserList();
-	}
 
 }
