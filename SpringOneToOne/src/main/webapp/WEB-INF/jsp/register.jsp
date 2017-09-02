@@ -80,7 +80,7 @@
 				<form:label path="course.id" class="col-md-4 control-label"
 					for="textinput">CourseName</form:label>
 				<div class="col-md-4">
-						<form:select path="course.id" id="course.id" name="course.id" class="form-control" multiple="true">
+						<form:select path="course.id" id="course.id" name="course.id" class="form-control">
 								<form:options items="${cmap}" />
 						</form:select>
 				</div>
